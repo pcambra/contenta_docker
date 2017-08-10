@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+drush si -y contenta_jsonapi --account-pass=test --db-url=mysql://$MYSQL_USER:$MYSQL_PASSWORD@database/$MYSQL_DATABASE
+
+drush uli --uri=localhost
+
