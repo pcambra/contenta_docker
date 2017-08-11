@@ -28,6 +28,7 @@ RUN yum install -y epel-release \
         php-pecl-redis \
         mariadb \
         git \
+        patch \
         unzip \
         wget && \
     yum --enablerepo=epel install -y fcgi && \
