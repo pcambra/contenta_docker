@@ -29,6 +29,7 @@ RUN yum install -y epel-release \
         mariadb \
         git \
         patch \
+        openssl \
         unzip \
         wget && \
     yum --enablerepo=epel install -y fcgi && \
