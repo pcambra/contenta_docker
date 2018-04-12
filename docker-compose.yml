@@ -3,8 +3,12 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "${HOST_HTTP_PORT}:80"
+      #- "80:80"
+      - "${HOST_HTTPS_PORT}:443"
+      #- "443:443"
+    # extra_hosts:
+    #   - "${HOSTNAME}:${HOSTIP}"
     networks:
       - contenta
     volumes:
@@ -16,7 +20,8 @@ services:
   php:
     build: ./php
     ports:
-      - "9000:9000"
+      - "${HOST_PHP_PORT}:9000"
+      #- "9000:9000"
     volumes:
       - www:/var/www
     env_file:
@@ -26,12 +31,14 @@ services:
   database:
     build: ./database
     ports:
-      - "3306:3306"
+      # HOST:CONTAINER
+      - "${HOST_MYSQL_PORT}:3306"
+      #- "3306:3306"
     volumes:
       - data:/var/lib/mysql
     env_file:
       - .env
-    networks: 
+    networks:
       - contenta
 
 volumes:
@@ -39,4 +46,4 @@ volumes:
   www:
 
 networks:
-  contenta: 
+  contenta:
