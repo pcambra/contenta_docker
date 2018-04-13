@@ -68,7 +68,7 @@ RUN mkdir -p /var/www && \
     chmod +x /usr/local/bin/docker-entrypoint && \
     chmod +x /usr/local/bin/init-drupal
 
-ARG CMS_VERSION master
+ARG CMS_VERSION=master
 RUN cd /usr/local/src && \
     git clone https://github.com/contentacms/contenta_jsonapi --branch ${CMS_VERSION} && \
     cd /usr/local/src/contenta_jsonapi && \
