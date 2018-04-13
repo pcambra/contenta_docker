@@ -68,11 +68,11 @@ RUN mkdir -p /var/www && \
     chmod +x /usr/local/bin/docker-entrypoint && \
     chmod +x /usr/local/bin/init-drupal
 
-ARG CMS_VERSION=v1.477
+ARG CMS_VERSION=master
 RUN cd /usr/local/src && \
     git clone https://github.com/contentacms/contenta_jsonapi && \
     cd /usr/local/src/contenta_jsonapi && \
-    git checkout CMS_VERSION && \
+    git checkout ${CMS_VERSION} && \
     composer create-project contentacms/contenta-jsonapi-project /var/www --stability dev --no-interaction && \
     cd /var/www && \
     composer config repositories.contenta_jsonapi path .
