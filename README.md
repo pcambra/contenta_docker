@@ -11,6 +11,12 @@ The container doesn't automatically run `drush site-install` because we want it 
 
 `docker-compose exec php composer run-script install:with-mysql`
 
+# Dealing with breakages
+
+Following installation if you find error messages indicating that one of the contrib modules is broken, you may need to downgrade that module. For example to downgrade the jsonapi_extras module from its current 2.11 version to 2.10 run this composer command from inside the web directory:
+
+`composer require "drupal/jsonapi_extras:2.10"`
+
 # Persistence
 
 Persistent state is stored in a database volume named `data`. You can destroy and recreate the containers as much as you like and your site will be preserved until you also destroy the volume.
