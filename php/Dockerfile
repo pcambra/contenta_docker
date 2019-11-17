@@ -52,7 +52,8 @@ COPY docker-entrypoint /usr/local/bin/
 COPY conf/php-fpm.conf conf/php.ini /etc/
 COPY conf/www.conf /etc/php-fpm.d/www.conf
 
-RUN mkdir -p /var/www  && \
+RUN mkdir -p /var/www/vendor/drush/drush  && \
+    ln -s $HOME/.composer/vendor/bin/drush /var/www/vendor/drush/drush && \
     mkdir -p /run/php-fpm  && \
     fix-permissions /etc/php.ini && \
     fix-permissions /etc/php-fpm.conf && \
