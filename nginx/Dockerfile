@@ -1,4 +1,4 @@
-FROM amazeeio/centos7-nginx:1.10
+FROM amazeeio/nginx:21.2.1
 
 COPY conf/drupal.conf /etc/nginx/sites/drupal.conf
 

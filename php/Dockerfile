@@ -4,7 +4,7 @@ FROM amazeeio/centos:7
 RUN yum install -y epel-release \
         http://rpms.remirepo.net/enterprise/remi-release-7.rpm  \
         yum-utils && \
-    yum-config-manager --enable remi-php71 && \
+    yum-config-manager --enable remi-php74 && \
     yum update -y && \
     yum install -y \
         php-bcmath \
@@ -22,6 +22,7 @@ RUN yum install -y epel-release \
         php-opcache \
         php-pcntl \
         php-pdo \
+    php-zip \
         php-pecl-apcu \
         php-pecl-apcu-bc \
         php-pecl-geoip \
@@ -39,7 +40,7 @@ RUN yum install -y epel-release \
     yum clean all
 
 # Install Composer
-ENV COMPOSER_VERSION 1.9.0
+ENV COMPOSER_VERSION 1.10.20
 RUN	curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=${COMPOSER_VERSION} && \
   chmod +x /usr/local/bin/composer && \
   composer global require "hirak/prestissimo:^0.3" && \
