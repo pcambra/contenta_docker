@@ -1,6 +1,6 @@
 FROM amazeeio/centos:7
 
-ENV MARIADB_VERSION=10.1
+ENV MARIADB_VERSION=10.3
 
 RUN { \
       echo '[mariadb]'; \
