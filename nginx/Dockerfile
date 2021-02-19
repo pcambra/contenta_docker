@@ -10,5 +10,6 @@ EXPOSE 8080
 COPY conf/drupal.conf /etc/nginx/conf.d/default.conf
 
 RUN fix-permissions /etc/nginx
+RUN curl -sLo /usr/local/bin/ep https://github.com/kreuzwerker/envplate/releases/download/v0.0.8/ep-linux && chmod +x /usr/local/bin/ep
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "/usr/local/bin/ep", "-v", "/etc/nginx/conf.d/default.conf", "--", "/usr/sbin/nginx", "-g", "daemon off;" ]

@@ -16,6 +16,12 @@ else
     COMPOSER_MEMORY_LIMIT=-1 composer create-project contentacms/contenta-jsonapi-project /var/www/. --stability dev --no-progress --no-interaction
     cd /var/www
     composer config repositories.contenta_jsonapi path .
+
+    GITLAB_TOKEN=${GITLAB_TOKEN:-soub85Z7ATtvc3NcSBXv}
+    composer config repositories.gitlab composer https://__token__:${GITLAB_TOKEN}@gitlab.com/api/v4/group/1437687/-/packages/composer/packages.json
+    composer config gitlab.com ${GITLAB_TOKEN}
+    COMPOSER_MEMORY_LIMIT=-1 composer require "garanteasy/garanteasy_migrations":"^1.8" "garanteasy/garanteasy_sync":"^1.32" "garanteasy/garanteasy_product":"^1.1" "garanteasy/garanteasy_overrides":"^1.4"
+
 fi
 
 exec "$@"
